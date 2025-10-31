@@ -344,6 +344,7 @@ footer {
 
 .columna-casita,
 .columna-comodidades {
+    margin: 15px;
     flex: 1; /* Ambas columnas toman el mismo espacio (50/50) */
     min-width: 0; /* Soluciona problemas de flex-overflow */
 }
@@ -451,17 +452,16 @@ footer {
 @media (max-width: 768px) {
     .contenedor-casita {
         flex-direction: column; /* Apila las columnas verticalmente */
-        gap: 30px;
+        gap: 20px;
     }
 
     .columna-casita,
     .columna-comodidades {
-        width: 100%; /* Asegura que tomen el ancho completo en móvil */
+        width: 90%; /* Asegura que tomen el ancho completo en móvil */
     }
 
     .contenedor-casita h2 {
-         /* Centramos el título en móvil para mayor impacto */
-         text-align: center; 
-         border-bottom: 1px solid var(--accent-color);
+        text-align: center; 
+        border-bottom: 1px solid var(--accent-color);
     }
 }
