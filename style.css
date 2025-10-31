@@ -1,8 +1,8 @@
 /* VARIABLES y RESET BÁSICO */
 :root {
-    --primary-color: #333; /* Color principal para texto */
-    --accent-color: #b596e0; /* Color de acento para botones/links */
-    --hover-color: #b596e0; /* NUEVO COLOR PARA HOVER (Lavanda suave) */
+    --primary-color: #333; 
+    --accent-color: #cad2c5 ; 
+    --hover-color: #772e25; 
     --light-bg: #f8f8f8; /* Fondo sutil para alternar secciones */
     --white-bg: #fff; /* Fondo principal blanco */
     --padding-section: 60px 0;
@@ -19,7 +19,7 @@ body {
     line-height: 1.6;
     background-color: var(--white-bg);
     color: var(--primary-color);
-    transition: background-color 0.3s;
+    transition: background-color 0.2s;
 }
 
 /* UTILIDADES */
@@ -69,7 +69,7 @@ body {
 }
 
 .nav-menu a:hover {
-    color: var(--hover-color); /* HOVER LAVANDA */
+    color: #52796f;
 }
 
 .cta-link {
@@ -143,7 +143,7 @@ h2 {
 }
 
 .cta-button:hover {
-    background-color: #b596e0;
+    background-color: #52796f ;
 }
 
 /* SECCIÓN IMÁGENES (Grid) */
@@ -232,7 +232,7 @@ h2 {
 }
 
 .social-icon:hover {
-    color: var(--hover-color); /* HOVER: Texto cambia a lavanda */
+    color: var(--hover-color); 
 }
 
 .social-icon i {
@@ -245,15 +245,15 @@ h2 {
 }
 
 .social-icon:hover i {
-    color: var(--hover-color); /* HOVER: Icono cambia a lavanda */
+    color: var(--hover-color); 
 }
 /* --- FIN SECCIÓN CONTACTO --- */
 
 
 /* FOOTER */
 footer {
-    background-color: var(--primary-color);
-    color: var(--white-bg);
+    background-color:#ede0d4;
+    color: #cb997e;
     padding: 20px 0;
     text-align: center;
     font-size: 0.9rem;
@@ -328,5 +328,139 @@ footer {
 
     .social-icon {
         justify-content: flex-start;
+    }
+}
+
+/* --- SECCIÓN LA CASITA / COMODIDADES (Dos Columnas) --- */
+
+.contenedor-casita {
+    /* Esta sección debe ir dentro de tu .container y .section-padding en el HTML */
+    display: flex; /* Activa Flexbox */
+    gap: 40px; /* Espacio entre las columnas, usando tu sistema de espaciado */
+    align-items: flex-start; /* Alinea el contenido desde arriba */
+    flex-wrap: wrap; /* Necesario para que las columnas se apilen en dispositivos pequeños */
+}
+
+.columna-casita,
+.columna-comodidades {
+    flex: 1; /* Ambas columnas toman el mismo espacio (50/50) */
+    min-width: 0; /* Soluciona problemas de flex-overflow */
+}
+
+/* Títulos de la sección */
+.contenedor-casita h2 {
+    /* Alineación local, sobreescribe el h2 global centrado */
+    text-align: left; 
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-top: 0; 
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--accent-color); /* Separador sutil */
+}
+
+/* Imagen de la casita (estática) */
+.columna-casita img {
+    width: 100%;
+    /* La altura será automática para mantener la proporción de la imagen de Picsum (200x300) */
+    height: auto; 
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    display: block;
+    /* Aseguramos que la imagen no sea más ancha que la columna */
+    max-width: 100%; 
+}
+
+/* Lista de comodidades */
+.columna-comodidades ul {
+    list-style: none; /* Quitamos las viñetas por defecto */
+    padding-left: 0;
+}
+
+.columna-comodidades li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding-left: 25px; /* Espacio para la viñeta custom */
+    position: relative;
+    color: var(--primary-color);
+}
+
+/* Viñeta personalizada con guion y color de acento */
+.columna-comodidades li::before {
+    content: "—"; /* Usamos un guion para la viñeta */
+    position: absolute;
+    left: 0;
+    color: var(--accent-color); 
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Nota "Pet friendly" */
+.nota-mascota {
+    text-align: center;
+    font-size: 1em;
+    padding: 15px;
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+    border-radius: 4px;
+    margin-top: 15px;
+    border: 1px solid var(--accent-color);
+    font-weight: 700;
+}
+
+/* Bloque "No incluye" */
+.no-incluye {
+    margin-top: 30px;
+    padding: 20px;
+    border-left: 5px solid var(--hover-color); /* Indicador visual de advertencia/exclusión */
+    background-color: var(--light-bg);
+    border-radius: 4px;
+}
+
+.no-incluye p {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--hover-color); /* Color de acento para la advertencia */
+}
+
+.no-incluye ul {
+    padding-left: 0;
+}
+
+.no-incluye li {
+    list-style: none;
+    padding-left: 15px;
+    position: relative;
+    color: var(--primary-color);
+    opacity: 0.8;
+}
+
+.no-incluye li::before {
+    content: "×"; /* Símbolo de "cerrar" o "no" para lo excluido */
+    position: absolute;
+    left: 0;
+    color: var(--hover-color);
+}
+
+
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+
+@media (max-width: 768px) {
+    .contenedor-casita {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        gap: 30px;
+    }
+
+    .columna-casita,
+    .columna-comodidades {
+        width: 100%; /* Asegura que tomen el ancho completo en móvil */
+    }
+
+    .contenedor-casita h2 {
+         /* Centramos el título en móvil para mayor impacto */
+         text-align: center; 
+         border-bottom: 1px solid var(--accent-color);
     }
 }
