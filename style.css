@@ -1,0 +1,332 @@
+/* VARIABLES y RESET BÁSICO */
+:root {
+    --primary-color: #333; /* Color principal para texto */
+    --accent-color: #b596e0; /* Color de acento para botones/links */
+    --hover-color: #b596e0; /* NUEVO COLOR PARA HOVER (Lavanda suave) */
+    --light-bg: #f8f8f8; /* Fondo sutil para alternar secciones */
+    --white-bg: #fff; /* Fondo principal blanco */
+    --padding-section: 60px 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: var(--white-bg);
+    color: var(--primary-color);
+    transition: background-color 0.3s;
+}
+
+/* UTILIDADES */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: var(--padding-section);
+}
+
+.light-bg {
+    background-color: var(--light-bg);
+}
+
+/* NAVEGACIÓN */
+.nav-bar {
+    background-color: var(--white-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-menu a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--hover-color); /* HOVER LAVANDA */
+}
+
+.cta-link {
+    background-color: var(--accent-color);
+    color: var(--white-bg) !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* TIPOGRAFÍA Y SECCIONES */
+h1, h2 {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* --- SECCIÓN HOME / HERO SECTION (GRADIENTE) --- */
+.hero-section {
+    min-height: 80vh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+
+    /* Gradiente Rosa Minimalista */
+    background: linear-gradient(
+        to bottom, 
+        #ffe8e8, 
+        #ffcccc 
+    );
+    
+    color: var(--primary-color);
+}
+
+.hero-section p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* BOTONES (CTA) */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white-bg);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #b596e0;
+}
+
+/* SECCIÓN IMÁGENES (Grid) */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.grid-item {
+    background-color: var(--light-bg); 
+    height: 250px; 
+    border-radius: 4px;
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block; 
+}
+
+/* --- SECCIÓN CONTACTO --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.contact-grid h3 {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Mapa */
+.map-placeholder {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 350px;
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.map-info {
+    padding: 10px;
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+}
+
+/* Links Sociales */
+.grid-social {
+    padding-top: 60px; 
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--hover-color); /* HOVER: Texto cambia a lavanda */
+}
+
+.social-icon i {
+    font-size: 1.6rem;
+    width: 35px; 
+    margin-right: 20px;
+    text-align: center;
+    color: var(--accent-color); /* Icono por defecto: azul */
+    transition: color 0.3s;
+}
+
+.social-icon:hover i {
+    color: var(--hover-color); /* HOVER: Icono cambia a lavanda */
+}
+/* --- FIN SECCIÓN CONTACTO --- */
+
+
+/* FOOTER */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white-bg);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+/* --- RESPONSIVE / MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    
+    :root {
+        --padding-section: 40px 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Navegación en Móvil */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        background-color: var(--white-bg);
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        margin: 10px 20px;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Contacto a una sola columna en móvil */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-grid h3 {
+        text-align: center;
+    }
+
+    .grid-social {
+        padding-top: 0;
+    }
+
+    .social-links {
+        margin-top: 15px;
+        align-items: flex-start;
+    }
+
+    .social-icon {
+        justify-content: flex-start;
+    }
+}

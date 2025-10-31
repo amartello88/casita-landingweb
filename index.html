@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8u7V5w7E6pXpS+oFv4+QvD5/rF4k3Z9E7P0pD+1tD2E5T9x85lP3rN3yP4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header class="nav-bar">
+        <div class="container">
+            <a href="#home" class="logo"><img src="/logo.svg" width= 50px "Logo" class="logo-svg">
+        </a>
+            <nav class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#acerca">Acerca</a>
+                <a href="#imagenes">Imágenes</a>
+                <a href="#contacto" class="cta-link">Contacto</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section section-padding">
+        <div class="container">
+            <h1>Hola. Sencillez ante todo.</h1>
+            <p>Un diseño minimalista enfocado en lo que realmente importa: tu mensaje.</p>
+            <a href="#contacto" class="cta-button">Contactanos</a>
+            
+        </div>
+    </section>
+
+    <section id="acerca" class="section-padding light-bg">
+        <div class="container">
+            <h2>Acerca de Nosotros</h2>
+            <p>Somos un equipo dedicado a la [Menciona tu sector clave, ej: ingeniería de software, diseño UX/UI o consultoría tecnológica].
+
+            Nuestra misión es simple: convertir la complejidad en soluciones funcionales y escalables. Nos enfocamos en la excelencia técnica y la transparencia para garantizar que cada proyecto no solo cumpla, sino que exceda las expectativas de valor y rendimiento.</p>
+            <p>Queremos que tus usuarios encuentren lo que buscan sin distracciones.</p>
+        </div>
+    </section>
+
+    <section id="imagenes" class="section-padding">
+        <div class="container">
+            <h2>Galería</h2>
+            <div class="image-grid">
+                <div class="grid-item">
+                    <img src="https://picsum.photos/400/300?random=1" alt="Imagen aleatoria 1">
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Imagen aleatoria 2">
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Imagen aleatoria 3">
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Imagen aleatoria 4">
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/400/300?random=5" alt="Imagen aleatoria 5">
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/400/300?random=6" alt="Imagen aleatoria 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section-padding light-bg">
+        <div class="container">
+            <h2>Contacto</h2>
+            
+            <div class="contact-grid">
+                
+                <div class="grid-map">
+                    <h3>Ubicación</h3>
+                    <div class="map-placeholder">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.3770806233633!2d-58.419140224705366!3d-34.59462517295758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca860e632963%3A0x7507589c98255fbe!2sBulnes%2C%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1761943410976!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <p class="map-info">Oficina Central: Av. Corrientes 300, CABA, Argentina.</p>
+                    </div>
+                </div>
+
+                <div class="grid-social">
+                    <h3>Nuestras Redes</h3>
+                    <div class="social-links">
+                        <a href="mailto:tuemail@ejemplo.com" aria-label="Mail" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                            <span>tuemail@gmail.com</span>
+                        </a>
+                        <a href="https://wa.me/1132324435" target="_blank" aria-label="WhatsApp" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+54 9 11 3233-4355</span>
+                        </a>
+                        <a href="https://instagram.com/tuusuario" target="_blank" aria-label="Instagram" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                            <span>@randomluna</span>
+                        </a>
+                        <a href="https://linkedin.com/in/tuperfil" target="_blank" aria-label="LinkedIn" class="social-icon">
+                            <i class="fa fa-linkedin-in"></i>
+                            <span>/lunawebdev</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><a href="https://vercel.com/lunasm">&copy;2025 Luna M ❤️</a>- Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
