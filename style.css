@@ -334,9 +334,10 @@ footer {
 /* --- SECCIÓN LA CASITA / COMODIDADES (Dos Columnas) --- */
 
 .contenedor-casita {
+    margin:15px 15px;
     /* Esta sección debe ir dentro de tu .container y .section-padding en el HTML */
     display: flex; /* Activa Flexbox */
-    gap: 40px; /* Espacio entre las columnas, usando tu sistema de espaciado */
+    gap: 0px; /* Espacio entre las columnas, usando tu sistema de espaciado */
     align-items: flex-start; /* Alinea el contenido desde arriba */
     flex-wrap: wrap; /* Necesario para que las columnas se apilen en dispositivos pequeños */
 }
