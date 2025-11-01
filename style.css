@@ -20,7 +20,6 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background-color: var(--white-bg);
     color: var(--primary-color);
@@ -45,6 +44,8 @@ body {
 .container p {
     text-align: center; 
 }
+
+
 /* NAVEGACIÓN */
 .nav-bar {
     background-color: var(--white-bg);
@@ -100,8 +101,13 @@ body {
     color: var(--white-bg) !important;
     padding: 12px 20px !important;
     border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.cta-link:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /
+}
 
 /* TIPOGRAFÍA Y SECCIONES */
 h1, h2 {
@@ -132,8 +138,8 @@ h2 {
     /* Gradiente Rosa Minimalista */
     background: linear-gradient(
         to bottom, 
-        #ffe8e8, 
-        #ffcccc 
+        #f4f0f0, 
+        #e6c6c6 
     );
     
     color: var(--primary-color);
