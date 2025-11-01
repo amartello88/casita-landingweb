@@ -448,6 +448,11 @@ footer {
         display: flex;
     }
 
+    .nav-bar .logo img,
+    .logo-svg {
+        height: 60px !important; /* tamano logo en mobile */
+    }
+
     .nav-menu {
         display: none;
         flex-direction: column;
