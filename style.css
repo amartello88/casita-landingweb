@@ -72,20 +72,28 @@ body {
     color: #52796f;
 }
 
+
+.menu-toggle {
+    display: none; /* desktop oculto */
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1001;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
 .cta-link {
     background-color: var(--accent-color);
     color: var(--white-bg) !important;
-    padding: 8px 15px;
+    padding: 12px 15px;
     border-radius: 4px;
 }
 
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
 
 /* TIPOGRAFÍA Y SECCIONES */
 h1, h2 {
@@ -260,37 +268,11 @@ footer {
 }
 
 
-/* --- RESPONSIVE / MEDIA QUERIES --- */
-@media (max-width: 768px) {
-    
-    :root {
-        --padding-section: 40px 0;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
-    /* Navegación en Móvil */
-    .menu-toggle {
-        display: block;
-    }
-
     .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 55px;
-        left: 0;
-        background-color: var(--white-bg);
-        padding: 10px 0;
-        
-    }
+        display: flex;          /* siempre visible */
+              /* espacio entre links */
+        align-items: center;
+}
 
     .nav-menu.active {
         display: flex;
@@ -300,7 +282,7 @@ footer {
         margin: 10px 20px;
         text-align: center;
         padding: 10px 0;
-        border-bottom: 1px solid #eee;
+        
     }
 
     .nav-menu a:last-child {
@@ -329,17 +311,15 @@ footer {
     .social-icon {
         justify-content: flex-start;
     }
-}
+
 
 /* --- SECCIÓN LA CASITA / COMODIDADES (Dos Columnas) --- */
 
 .contenedor-casita {
-    margin:15px 15px;
-    /* Esta sección debe ir dentro de tu .container y .section-padding en el HTML */
-    display: flex; /* Activa Flexbox */
-    gap: 0px; /* Espacio entre las columnas, usando tu sistema de espaciado */
-    align-items: flex-start; /* Alinea el contenido desde arriba */
-    flex-wrap: wrap; /* Necesario para que las columnas se apilen en dispositivos pequeños */
+    display: flex; /* fila por defecto */
+    gap: 0px;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .columna-casita,
@@ -450,14 +430,35 @@ footer {
 /* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
 
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        background-color: var(--white-bg);
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    /* Solo móvil: apilar casita/comodidades */
     .contenedor-casita {
-        flex-direction: column; /* Apila las columnas verticalmente */
+        flex-direction: column; 
         gap: 20px;
     }
 
     .columna-casita,
     .columna-comodidades {
-        width: 90%; /* Asegura que tomen el ancho completo en móvil */
+        width: 90%; 
     }
 
     .contenedor-casita h2 {
@@ -465,3 +466,53 @@ footer {
         border-bottom: 1px solid var(--accent-color);
     }
 }
+
+/* Asegura que el logo del header no se comporte como las imágenes del contenido */
+.nav-bar .logo img,
+.logo-svg {
+    width: auto !important;
+    height: 80px; /* ajustá según tu diseño */
+    max-width: none !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+    display: inline-block;
+}
+
+/* Estilos básicos de las líneas */
+.linea {
+    display: block;
+    width: 30px; /* Ajusta el ancho según necesites */
+    height: 3px; /* El grosor de la línea */
+    background: #000000; /* El color de las líneas */
+    margin:  0; /* Espacio entre líneas */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+}
+
+
+
+.menu-toggle .linea {
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active .linea-1 {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active .linea-2 {
+    opacity: 0;
+}
+
+.menu-toggle.active .linea-3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+.logo.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
