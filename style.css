@@ -530,8 +530,8 @@ footer {
 }
 
 
-.logo.hide {
-    opacity: 0;
-    pointer-events: none;
-}
 
+/* logo de airbnb oculto ,borrar para ver*/
+.hidden {
+    display: none;
+}
