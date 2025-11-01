@@ -34,7 +34,7 @@ body {
 }
 
 .section-padding {
-    padding: var(--padding-section);
+    padding: 10px;
 }
 
 .light-bg {
@@ -150,7 +150,7 @@ h2 {
     font-size: 1.1rem;
 }
 
-/* BOTONES (CTA) */
+/* BOTONES (consulta disponib) */
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
@@ -393,18 +393,46 @@ footer {
     font-weight: bold;
 }
 
-/* Nota "Pet friendly" */
+/* Nota video youtube link */
+
 .nota-mascota {
     text-align: center;
     font-size: 1em;
-    padding: 15px;
     background-color: var(--light-bg);
     color: var(--primary-color);
     border-radius: 4px;
     margin-top: 15px;
-    border: 1px solid var(--accent-color);
+    margin: 0;
+    padding: 0;
+    background: none !important;
     font-weight: 700;
 }
+
+
+
+
+/* Estilo principal del botón */
+.nota-mascota a {
+    display: block;               /* ocupa toda la línea */
+    width: 100%;                  /* ancho completo del contenedor */
+    text-align: center;           /* centra el texto */
+    background-color: var(--accent-color);
+    color: var(--white-bg);
+    padding: 9px 25px;            /* altura y espacio horizontal */
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;             /* separa del contenido de arriba */
+}
+
+/* Hover */
+.nota-mascota a:hover {
+    background-color: #52796f;
+}
+
 
 /* Bloque "No incluye" */
 .no-incluye {
