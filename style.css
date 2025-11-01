@@ -36,7 +36,10 @@ body {
 .light-bg {
     background-color: var(--light-bg);
 }
-
+.container h1,
+.container p {
+    text-align: center; 
+}
 /* NAVEGACIÓN */
 .nav-bar {
     background-color: var(--white-bg);
@@ -396,7 +399,7 @@ footer {
 .no-incluye {
     margin-top: 30px;
     padding: 20px;
-    border-left: 5px solid var(--hover-color); /* Indicador visual de advertencia/exclusión */
+    border-left: 5px solid #cb997e; 
     background-color: var(--light-bg);
     border-radius: 4px;
 }
