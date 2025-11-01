@@ -52,7 +52,7 @@ body {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1;
 }
 
 .nav-bar .container {
@@ -90,7 +90,6 @@ body {
     width: 30px;
     height: 30px;
     position: relative;
-    z-index: 1001;
     flex-direction: column;
     justify-content: center;
     gap: 6px;
@@ -468,98 +467,108 @@ footer {
     color: var(--hover-color);
 }
 
-
-/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-bar .logo img,
-    .logo-svg {
-        height: 60px !important; /* tamano logo en mobile */
-    }
-
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 55px;
-        left: 0;
-        background-color: var(--white-bg);
-        padding: 10px 0;
-        z-index: 1000;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    /* Solo móvil: apilar casita/comodidades */
-    .contenedor-casita {
-        flex-direction: column; 
-        gap: 20px;
-    }
-
-    .columna-casita,
-    .columna-comodidades {
-        width: 90%; 
-    }
-
-    .contenedor-casita h2 {
-        text-align: center; 
-        border-bottom: 1px solid var(--accent-color);
-    }
-}
-
-/* Asegura que el logo del header no se comporte como las imágenes del contenido */
-.nav-bar .logo img,
-.logo-svg {
-    width: auto !important;
-    height: 80px; /* ajustá según tu diseño */
-    max-width: none !important;
-    box-shadow: none !important;
-    margin-bottom: 0 !important;
-    display: inline-block;
-}
-
-/* Estilos básicos de las líneas */
-.linea {
-    display: block;
-    width: 30px; /* Ajusta el ancho según necesites */
-    height: 3px; /* El grosor de la línea */
-    background: #000000; /* El color de las líneas */
-    margin:  0; /* Espacio entre líneas */
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
-}
-
-
-
-.menu-toggle .linea {
-    width: 100%;
-    height: 3px;
-    background-color: #000;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-.menu-toggle.active .linea-1 {
-    transform: rotate(45deg) translate(8px, 8px);
-}
-
-.menu-toggle.active .linea-2 {
-    opacity: 0;
-}
-
-.menu-toggle.active .linea-3 {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-
-
 /* logo de airbnb oculto ,borrar para ver*/
 .hidden {
     display: none;
 }
+
+
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+/* --- RESPONSIVE PARA DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+
+@media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+            z-index: 1010;
+            
+        }
+        .logo.hide {
+        display: none !important; /* ¡Adiós, logo! */
+    }
+
+
+        .nav-bar .logo img,
+        .logo-svg {
+            height: 60px !important; /* tamano logo en mobile */
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 55px;
+            left: 0;
+            background-color: var(--white-bg);
+            padding: 10px 0;
+            z-index: 1015;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        /* Solo móvil: apilar casita/comodidades */
+        .contenedor-casita {
+            flex-direction: column; 
+            gap: 20px;
+        }
+
+        .columna-casita,
+        .columna-comodidades {
+            width: 90%; 
+        }
+
+        .contenedor-casita h2 {
+            text-align: center; 
+            border-bottom: 1px solid var(--accent-color);
+        }
+    }
+
+    /* Asegura que el logo del header no se comporte como las imágenes del contenido */
+    .nav-bar .logo img,
+    .logo-svg {
+        width: auto !important;
+        height: 80px; /* ajustá según tu diseño */
+        max-width: none !important;
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+        display: inline-block;
+    }
+
+    /* Estilos básicos de las líneas */
+    .linea {
+        display: block;
+        width: 30px; /* Ajusta el ancho según necesites */
+        height: 3px; /* El grosor de la línea */
+        background: #000000; /* El color de las líneas */
+        margin:  0; /* Espacio entre líneas */
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+    }
+
+
+    .menu-toggle .linea {
+        width: 100%;
+        height: 3px;
+        background-color: #000;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active .linea-1 {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active .linea-2 {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .linea-3 {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
