@@ -128,6 +128,41 @@ h2 {
 
 /* --- SECCIÓN HOME / HERO SECTION (GRADIENTE) --- */
 .hero-section {
+    background: url("/IMG/banner1.png") no-repeat center center/cover;
+    position: relative;
+    color: var(--white-bg);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    z-index: 0;
+}
+
+/* Opcional: agregar una capa semitransparente para que el texto se lea bien */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35); /* podés subir o bajar la opacidad */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2; /* pone el texto encima del overlay */
+}
+
+.hero-section h1,
+.hero-section p {
+    margin-bottom: 30px;
+    color: #fff; /* asegura contraste sobre la imagen */
+}
+
+/* .hero-section {
     min-height: 80vh; 
     display: flex;
     flex-direction: column; 
@@ -137,7 +172,7 @@ h2 {
     padding: 60px 20px;
 
     /* Gradiente Rosa Minimalista */
-    background: linear-gradient(
+/*     background: linear-gradient(
         to bottom, 
         #f4f0f0, 
         #e6c6c6 
@@ -149,7 +184,7 @@ h2 {
 .hero-section p {
     margin-bottom: 30px;
     font-size: 1.1rem;
-}
+} */ 
 
 /* BOTONES (consulta disponib) */
 .cta-button {
@@ -169,8 +204,82 @@ h2 {
     background-color: #52796f ;
 }
 
-/* SECCIÓN IMÁGENES (Grid) */
-.image-grid {
+
+
+/* SECCIÓN IMÁGENES (Grid) & GRID JS lightbox */
+/* SECCIÓN IMÁGENES (Grid) & GRID JS lightbox */
+/* SECCIÓN IMÁGENES (Grid) & GRID JS lightbox */
+
+
+.grid-item img {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.grid-item img:hover {
+    transform: scale(1.03);
+}
+
+/* Fondo del lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Imagen principal dentro del lightbox */
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    object-fit: contain;
+    
+}
+
+/* Estado activo (visible) */
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Botón de cierre (la X) */
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    color: rgb(3, 3, 3);
+    cursor: pointer;
+    font-weight: 300;
+    transition: transform 0.2s ease, color 0.2s ease;
+    user-select: none;
+}
+
+.lightbox-close:hover {
+    color:#979e93 ;
+    transform: scale(1.1);
+}
+/* Controla el tamaño y proporción de todas las imágenes dentro del grid */
+.image-grid img {
+    width: 100%;             
+    height: 100%;             
+    object-fit: contain;        
+    display: block;           
+    border-radius: 4px;       
+    max-height: 250px;        
+}
+
+    .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -192,8 +301,12 @@ h2 {
     height: 100%;
     object-fit: cover; 
     display: block; 
-}
+} */
 
+
+/* --- SECCIÓN CONTACTO --- */
+/* --- SECCIÓN CONTACTO --- */
+/* --- SECCIÓN CONTACTO --- */
 /* --- SECCIÓN CONTACTO --- */
 .contact-grid {
     display: grid;
