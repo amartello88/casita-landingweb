@@ -29,7 +29,7 @@ body {
 /* UTILIDADES */
     .container {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 10px auto;
     padding: 40px 20px;
     text-align: center;
     }
@@ -280,6 +280,13 @@ footer {
     padding: 20px 0;
     text-align: center;
     font-size: 0.9rem;
+    margin: 0 auto;
+    
+}
+
+footer .container {
+    margin: 0 auto !important;
+    padding: 10px 0;
 }
 
 
@@ -373,6 +380,7 @@ footer {
 .columna-comodidades ul {
     list-style: none; /* Quitamos las viñetas por defecto */
     padding-left: 0;
+    text-align: left;
 }
 
 .columna-comodidades li {
@@ -573,4 +581,3 @@ footer {
     .menu-toggle.active .linea-3 {
         transform: rotate(-45deg) translate(5px, -5px);
     }
-    
