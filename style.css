@@ -749,21 +749,32 @@ footer .container {
     /* == AJUSTE DE LIGHTBOX PARA MÓVILES (Menos separación) == */
     /* ======================================================= */
     
+    .lightbox-prev,
+    .lightbox-next {
+        /* ¡QUITAMOS EL FONDO BLANCO/CÍRCULO! */
+        background-color: transparent !important; 
+        
+        /* Aseguramos que la flecha se vea bien sobre la imagen */
+        color: #fff; /* Color blanco para contraste */
+        /* Sombra para que se lea sobre cualquier imagen (clara u oscura) */
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); 
+    }
+    
     .lightbox-prev {
         /* Distancia más corta al borde izquierdo de la pantalla */
-        left: 10px; 
+        left: 0px; 
         
-        /* Opcional: Si quieres que el círculo sea más pequeño */
-        padding: 10px;
+        /* Dejamos el padding y font-size como lo pediste */
+        padding: 15px;
         font-size: 40px; 
     }
 
     .lightbox-next {
         /* Distancia más corta al borde derecho de la pantalla */
-        right: 10px;
+        right: 0px;
         
-        /* Opcional: Si quieres que el círculo sea más pequeño */
-        padding: 10px;
+        /* Dejamos el padding y font-size como lo pediste */
+        padding: 15px;
         font-size: 40px; 
     }
     
@@ -771,6 +782,15 @@ footer .container {
     .lightbox img {
         max-width: 95%; /* Usar casi todo el ancho */
         max-height: 95vh; /* Usar casi todo el alto */
+    }
+
+    /* Ajuste de Hover: Quitamos el efecto de fondo y solo cambiamos el color de la flecha */
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+        background-color: transparent !important;
+        color: #cad2c5; /* Usamos tu color de acento */
+        /* Mantenemos el transform para un pequeño "pop" */
+        transform: translateY(-50%) scale(1.1); 
     }
 
 }
