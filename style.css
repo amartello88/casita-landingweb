@@ -260,15 +260,16 @@ h2 {
 
 /* Botón de cierre (la X) */
 .lightbox-close {
-    position: absolute;
-    top: 30px;
-    right: 40px;
+    position: fixed;
+    top: 5px;
+    right: 20px;
     font-size: 40px;
     color: rgb(3, 3, 3);
     cursor: pointer;
     font-weight: 300;
     transition: transform 0.2s ease, color 0.2s ease;
     user-select: none;
+    z-index: 3001;
 }
 
 .lightbox-close:hover {
