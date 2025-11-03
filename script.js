@@ -1,60 +1,91 @@
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+    /* ------------------- MENÚ ------------------- */
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const logo = document.querySelector('.logo');
-    const navLinks = document.querySelectorAll('.nav-menu a'); // todos los links del menú
+    const navLinks = document.querySelectorAll('.nav-menu a');
 
-    // Abrir/cerrar menú con el toggle
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         navMenu.classList.toggle('active');
         menuToggle.classList.toggle('active');
         logo.classList.toggle('hide');
     });
 
-    // Cerrar menú al hacer click en cualquier link
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('active');
-            logo.classList.remove('hide');
+        link.addEventListener('click', function () {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        logo.classList.remove('hide');
         });
     });
-});
 
-/* pop up img galeria section */
-    document.addEventListener('DOMContentLoaded', () => {
+    /* ------------------- LIGHTBOX CON FLECHAS ------------------- */
     const images = document.querySelectorAll('.image-grid img');
-
-    // Crear el lightbox y la X
     const lightbox = document.createElement('div');
     lightbox.classList.add('lightbox');
-    
+
     const img = document.createElement('img');
     const closeBtn = document.createElement('span');
+    const prevBtn = document.createElement('span');
+    const nextBtn = document.createElement('span');
+
     closeBtn.classList.add('lightbox-close');
-    closeBtn.innerHTML = '&times;'; // la X
-    
+    prevBtn.classList.add('lightbox-prev');
+    nextBtn.classList.add('lightbox-next');
+
+    closeBtn.innerHTML = '&times;';
+    prevBtn.innerHTML = '&#10094;'; // flecha izquierda
+    nextBtn.innerHTML = '&#10095;'; // flecha derecha
+
     lightbox.appendChild(img);
     lightbox.appendChild(closeBtn);
+    lightbox.appendChild(prevBtn);
+    lightbox.appendChild(nextBtn);
     document.body.appendChild(lightbox);
 
-    // Mostrar imagen clickeada
-    images.forEach(image => {
-        image.addEventListener('click', () => {
-        img.src = image.src;
+    let currentIndex = 0;
+
+    const showImage = (index) => {
+        img.style.opacity = 0;
+        setTimeout(() => {
+        img.src = images[index].src;
+        img.onload = () => (img.style.opacity = 1);
+        }, 150);
         lightbox.classList.add('active');
+    };
+
+    images.forEach((image, index) => {
+        image.addEventListener('click', () => {
+        currentIndex = index;
+        showImage(currentIndex);
         });
     });
 
-    // Cerrar al hacer clic en la X
-    closeBtn.addEventListener('click', () => {
-        lightbox.classList.remove('active');
+    // Navegación flechas
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
     });
 
-    // Cerrar al hacer clic fuera de la imagen
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    // Cerrar lightbox
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+
     lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-        }
+        if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+
+    // Navegar con teclado
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft') prevBtn.click();
+        if (e.key === 'ArrowRight') nextBtn.click();
+        if (e.key === 'Escape') lightbox.classList.remove('active');
     });
     });

@@ -223,15 +223,18 @@ h2 {
 /* Fondo del lightbox */
 .lightbox {
     display: none;
-    position: fixed;
+    position: fixed; /* Mantenemos FIXED para que cubra toda la ventana */
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
+    
+    /* Centramos el contenido (la imagen) */
     justify-content: center;
     align-items: center;
+    
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -239,11 +242,14 @@ h2 {
 /* Imagen principal dentro del lightbox */
 .lightbox img {
     max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    max-height: 90vh; /* Usa 90vh para asegurar que cabe en la altura de la pantalla */
     object-fit: contain;
     
+    /* Aseguramos que se posiciona estáticamente para no estorbar a las flechas */
+    position: static; 
+    
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
 /* Estado activo (visible) */
@@ -302,6 +308,46 @@ h2 {
     object-fit: cover; 
     display: block; 
 } */
+/* --- Flechas de navegación del lightbox --- */
+
+.lightbox-prev,
+.lightbox-next {
+    /* Quitamos el position: fixed/absolute de aquí */
+    cursor: pointer;
+    user-select: none;
+    z-index: 3000;
+    transition: transform 0.2s ease, color 0.2s ease, background-color 0.3s ease;
+    
+    /* Estilos visuales del botón/flecha */
+    font-size: 35px; /* Tamaño de la flecha */
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 15px; /* Padding para el círculo */
+    line-height: 1; /* Ayuda a centrar el texto/carácter */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.lightbox-prev {
+    position: absolute; /* Posicionamiento dentro del lightbox (100% de la ventana) */
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-next {
+    position: absolute; /* Posicionamiento dentro del lightbox (100% de la ventana) */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* Hover efecto */
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: #52796f; 
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
 
 
 /* --- SECCIÓN CONTACTO --- */
@@ -695,3 +741,35 @@ footer .container {
     .menu-toggle.active .linea-3 {
         transform: rotate(-45deg) translate(5px, -5px);
     }
+
+@media (max-width: 768px) {
+    
+    /* ======================================================= */
+    /* == AJUSTE DE LIGHTBOX PARA MÓVILES (Menos separación) == */
+    /* ======================================================= */
+    
+    .lightbox-prev {
+        /* Distancia más corta al borde izquierdo de la pantalla */
+        left: 10px; 
+        
+        /* Opcional: Si quieres que el círculo sea más pequeño */
+        padding: 10px;
+        font-size: 40px; 
+    }
+
+    .lightbox-next {
+        /* Distancia más corta al borde derecho de la pantalla */
+        right: 10px;
+        
+        /* Opcional: Si quieres que el círculo sea más pequeño */
+        padding: 10px;
+        font-size: 40px; 
+    }
+    
+    /* Aseguramos que la imagen use el espacio máximo */
+    .lightbox img {
+        max-width: 95%; /* Usar casi todo el ancho */
+        max-height: 95vh; /* Usar casi todo el alto */
+    }
+
+}
