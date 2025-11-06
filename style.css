@@ -448,6 +448,16 @@ footer .container {
     margin: 0 auto !important;
     padding: 10px 0;
 }
+footer a {
+  color: #d6809e; /* rosa suave, cambialo si querés otro tono */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+  color: #b84e75; /* rosa más oscuro al pasar el mouse */
+}
 
 
     .nav-menu {
