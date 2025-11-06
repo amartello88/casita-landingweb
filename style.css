@@ -505,120 +505,100 @@ footer a:hover {
     }
 
 
+/* --- SECCIÓN COMODIDADES (Dos Columnas) --- */
 /* --- SECCIÓN LA CASITA / COMODIDADES (Dos Columnas) --- */
-
 .contenedor-casita {
-    display: flex; /* fila por defecto */
-    gap: 0px;
+    display: flex;
+    justify-content: center; /* centra el contenido dentro del container */
     align-items: flex-start;
     flex-wrap: wrap;
+    gap: 40px; /* espacio consistente entre columnas */
+    margin: 0 auto;
+    max-width: 1100px; /* evita que se estire demasiado en pantallas grandes */
 }
 
+/* Columnas */
 .columna-casita,
 .columna-comodidades {
-    margin: 15px;
-    flex: 1; /* Ambas columnas toman el mismo espacio (50/50) */
-    min-width: 0; /* Soluciona problemas de flex-overflow */
+    flex: 1 1 450px; /* ancho base con flexibilidad */
+    margin: 0; /* eliminamos márgenes desbalanceados */
+    min-width: 300px;
 }
 
-/* Títulos de la sección */
+/* Títulos */
 .contenedor-casita h2 {
-    /* Alineación local, sobreescribe el h2 global centrado */
-    text-align: left; 
+    text-align: left;
     font-size: 1.8rem;
     color: var(--primary-color);
-    margin-top: 0; 
     margin-bottom: 25px;
     padding-bottom: 5px;
-    border-bottom: 2px solid var(--accent-color); /* Separador sutil */
+    border-bottom: 2px solid var(--accent-color);
 }
 
-/* Imagen de la casita (estática) */
+/* Imagen de La Casita */
 .columna-casita img {
     width: 100%;
-    /* La altura será automática para mantener la proporción de la imagen de Picsum (200x300) */
-    height: auto; 
+    height: auto;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     display: block;
-    /* Aseguramos que la imagen no sea más ancha que la columna */
-    max-width: 100%; 
 }
 
-/* Lista de comodidades */
-.columna-comodidades ul {
-    list-style: none; /* Quitamos las viñetas por defecto */
-    padding-left: 0;
-    text-align: left;
-}
-
-
-.columna-comodidades li {
-    margin-bottom: 12px;
-    font-size: 1rem;
-    line-height: 1.4;
-    padding-left: 25px; /* Espacio para la viñeta custom */
-    position: relative;
-    color: var(--primary-color);
-}
-
-/* Viñeta personalizada con guion y color de acento */
-.columna-comodidades li::before {
-    content: "—"; /* Usamos un guion para la viñeta */
-    position: absolute;
-    left: 0;
-    color: var(--accent-color); 
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-/* Nota video youtube link */
-
+/* Enlace video */
 .nota-mascota {
     text-align: center;
-    font-size: 1em;
-    background-color: var(--light-bg);
-    color: var(--primary-color);
-    border-radius: 4px;
-    margin-top: 15px;
-    margin: 0;
-    padding: 0;
-    background: none !important;
+    margin-top: 10px;
     font-weight: 700;
+    background: none !important;
 }
 
-
-
-
-/* Estilo principal del botón */
 .nota-mascota a {
-    display: block;               /* ocupa toda la línea */
-    width: 100%;                  /* ancho completo del contenedor */
-    text-align: center;           /* centra el texto */
+    display: inline-block;
     background-color: var(--accent-color);
     color: var(--white-bg);
-    padding: 9px 25px;            /* altura y espacio horizontal */
-    text-decoration: none;
+    padding: 10px 25px;
     border-radius: 10px;
+    text-decoration: none;
     font-weight: 700;
     transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;             /* separa del contenido de arriba */
 }
 
-/* Hover */
 .nota-mascota a:hover {
     background-color: #52796f;
 }
 
+/* Lista de comodidades */
+.columna-comodidades ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.columna-comodidades li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-left: 25px;
+    position: relative;
+    color: var(--primary-color);
+}
+
+.columna-comodidades li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    font-weight: bold;
+}
 
 /* Bloque "No incluye" */
 .no-incluye {
     margin-top: 30px;
     padding: 20px;
-    border-left: 5px solid #cb997e; 
+    border-left: 5px solid #cb997e;
     background-color: var(--light-bg);
     border-radius: 4px;
 }
@@ -626,11 +606,12 @@ footer a:hover {
 .no-incluye p {
     font-weight: 700;
     margin-bottom: 10px;
-    color: var(--hover-color); /* Color de acento para la advertencia */
+    color: var(--hover-color);
 }
 
 .no-incluye ul {
     padding-left: 0;
+    margin: 0;
 }
 
 .no-incluye li {
@@ -642,11 +623,12 @@ footer a:hover {
 }
 
 .no-incluye li::before {
-    content: "×"; /* Símbolo de "cerrar" o "no" para lo excluido */
+    content: "×";
     position: absolute;
     left: 0;
     color: var(--hover-color);
 }
+
 
 /* logo de airbnb oculto ,borrar para ver*/
 .hidden {
@@ -697,14 +679,18 @@ footer a:hover {
         /* Solo móvil: apilar casita/comodidades */
         .contenedor-casita {
             flex-direction: column; 
+            align-items: center;
+            text-align: center;
             gap: 20px;
         }
 
         .columna-casita,
         .columna-comodidades {
-            width: 90%; 
+            width: 100%; 
         }
-
+        .columna-comodidades ul {
+        text-align: left;
+    }
         .contenedor-casita h2 {
             text-align: center; 
             border-bottom: 1px solid var(--accent-color);
