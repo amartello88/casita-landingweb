@@ -1,5 +1,5 @@
-    document.addEventListener('DOMContentLoaded', function () {
-    /* ------------------- MENÚ ------------------- */
+document.addEventListener('DOMContentLoaded', function () {
+  /* ------------------- MENÚ ------------------- */
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const logo = document.querySelector('.logo');
@@ -44,6 +44,7 @@
     document.body.appendChild(lightbox);
 
     let currentIndex = 0;
+    let scrollY = 0; // guarda posición scroll para mobile
 
     const showImage = (index) => {
         img.style.opacity = 0;
@@ -52,6 +53,22 @@
         img.onload = () => (img.style.opacity = 1);
         }, 150);
         lightbox.classList.add('active');
+
+        // 🚫 Bloquea scroll del fondo (móvil y desktop)
+        scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+
+        // ✅ Restaura el scroll original
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollY);
     };
 
     images.forEach((image, index) => {
@@ -74,11 +91,10 @@
         showImage(currentIndex);
     });
 
-    // Cerrar lightbox
-    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
-
+    // Cerrar lightbox (botón o clic fuera)
+    closeBtn.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) lightbox.classList.remove('active');
+        if (e.target === lightbox) closeLightbox();
     });
 
     // Navegar con teclado
@@ -86,6 +102,6 @@
         if (!lightbox.classList.contains('active')) return;
         if (e.key === 'ArrowLeft') prevBtn.click();
         if (e.key === 'ArrowRight') nextBtn.click();
-        if (e.key === 'Escape') lightbox.classList.remove('active');
+        if (e.key === 'Escape') closeLightbox();
     });
     });
