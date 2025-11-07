@@ -753,7 +753,7 @@ footer a:hover {
         /* Aseguramos que la flecha se vea bien sobre la imagen */
         color: #fff; /* Color blanco para contraste */
         /* Sombra para que se lea sobre cualquier imagen (clara u oscura) */
-        text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); 
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
     }
     
     .lightbox-prev {
