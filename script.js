@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ------------------- LIGHTBOX CON FLECHAS ------------------- */
+    /* ------------------- LIGHTBOX CON FLECHAS + SWIPE ------------------- */
     const images = document.querySelectorAll('.image-grid img');
     const lightbox = document.createElement('div');
     lightbox.classList.add('lightbox');
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
     nextBtn.classList.add('lightbox-next');
 
     closeBtn.innerHTML = '&times;';
-    prevBtn.innerHTML = '&#10094;'; // flecha izquierda
-    nextBtn.innerHTML = '&#10095;'; // flecha derecha
+    prevBtn.innerHTML = '&#10094;';
+    nextBtn.innerHTML = '&#10095;';
 
     lightbox.appendChild(img);
     lightbox.appendChild(closeBtn);
@@ -44,17 +44,22 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(lightbox);
 
     let currentIndex = 0;
-    let scrollY = 0; // guarda posición scroll para mobile
+    let scrollY = 0;
 
     const showImage = (index) => {
-        img.style.opacity = 0;
-        setTimeout(() => {
-        img.src = images[index].src;
-        img.onload = () => (img.style.opacity = 1);
-        }, 150);
+        // 🔹 Mostrar lightbox
+        lightbox.style.display = 'flex';
         lightbox.classList.add('active');
 
-        // 🚫 Bloquea scroll del fondo (móvil y desktop)
+        img.classList.add('fade-out');
+        setTimeout(() => {
+        img.src = images[index].src;
+        img.onload = () => {
+            img.classList.remove('fade-out');
+        };
+        }, 200);
+
+        // 🚫 Bloquea scroll del fondo
         scrollY = window.scrollY;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${scrollY}px`;
@@ -62,15 +67,16 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const closeLightbox = () => {
+        lightbox.style.display = 'none';
         lightbox.classList.remove('active');
 
-        // ✅ Restaura el scroll original
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
         window.scrollTo(0, scrollY);
     };
 
+    // Abrir lightbox al hacer clic en una imagen
     images.forEach((image, index) => {
         image.addEventListener('click', () => {
         currentIndex = index;
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Navegación flechas
+    // Navegación con flechas
     prevBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         currentIndex = (currentIndex - 1 + images.length) % images.length;
@@ -91,17 +97,49 @@ document.addEventListener('DOMContentLoaded', function () {
         showImage(currentIndex);
     });
 
-    // Cerrar lightbox (botón o clic fuera)
+    // Cerrar lightbox
     closeBtn.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
 
-    // Navegar con teclado
+    // Navegación con teclado
     document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
+        if (lightbox.style.display !== 'flex') return;
         if (e.key === 'ArrowLeft') prevBtn.click();
         if (e.key === 'ArrowRight') nextBtn.click();
         if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* ------------------- SWIPE TÁCTIL CON FADE ------------------- */
+    let startX = 0;
+    let endX = 0;
+
+    img.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    img.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    img.addEventListener('touchend', () => {
+        const swipeDistance = endX - startX;
+
+        if (Math.abs(swipeDistance) > 50) {
+        img.classList.add('fade-out');
+        setTimeout(() => {
+            if (swipeDistance < 0) {
+            currentIndex = (currentIndex + 1) % images.length;
+            } else {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            }
+            img.src = images[currentIndex].src;
+            img.classList.remove('fade-out');
+        }, 200);
+        }
+
+        startX = 0;
+        endX = 0;
     });
     });
