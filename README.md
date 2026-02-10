@@ -12,6 +12,13 @@ La página está desplegada en Vercel:
 
 - **CSS3** para estilos y diseño responsivo
 - **Vercel** para hosting y despliegue
+- **JavaScript (Vanilla)** para:
+  - Manipulación del DOM (mostrar/ocultar menú, lightbox dinámico).
+  - Manejo de eventos (click, teclado, gestos táctiles).
+  - Animaciones simples con clases CSS (`fade-out`).
+  - Navegación con flechas y swipe en imágenes.
+  - Bloqueo de scroll al abrir el lightbox para mejorar la UX.
+
 
 ## 📂 Estructura del proyecto
 ├── index.html        # Página principal
