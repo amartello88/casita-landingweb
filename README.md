@@ -9,7 +9,6 @@ La página está desplegada en Vercel:
 
 ## 🛠️ Tecnologías utilizadas
 - **HTML5** para la estructura del contenidogit push origin main
-
 - **CSS3** para estilos y diseño responsivo
 - **Vercel** para hosting y despliegue
 - **JavaScript (Vanilla)** para:
